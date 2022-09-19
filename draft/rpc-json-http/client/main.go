@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 )
@@ -27,7 +27,7 @@ func main() {
 	}
 	defer res.Body.Close()
 
-	buf, err = ioutil.ReadAll(res.Body)
+	buf, err = io.ReadAll(res.Body)
 	if err != nil {
 		log.Fatal("read all failed: ", err)
 	}
